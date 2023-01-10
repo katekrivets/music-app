@@ -2,7 +2,7 @@
 ## What I've done:
 *added components: track list, artist,album,track
 
-*join it another component 'App' to make the main menu
+*join it to another component 'App' to make the main menu
 
 ## How to use app:
 To watch code [visit](https://dashagoryacheva.github.io/task-with-webpack/) !
