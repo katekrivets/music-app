@@ -1,6 +1,7 @@
 const path = require('path');
  const HtmlWebpackPlugin = require('html-webpack-plugin');
  const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+ const json = require('./src/components/songs');
  module.exports = {
    entry: {
      app: './src/index.js',

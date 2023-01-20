@@ -1,0 +1,43 @@
+.track-album-block{
+ 
+    font-family: Arial, "Helvetica Neue";
+    font-size: 15px;   
+    display: inline-block;
+}
+.track-block{
+    background-color: rgb(208, 211, 214);
+    padding: 2%;
+}
+.trackList-item{
+ 
+    border: 1px groove rgb(114, 113, 113);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-inline-start: 0px;
+
+
+}
+.track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Arial, "Helvetica Neue";
+    font-size: 30px;
+}
+.music-icon{
+    background-image:url("music.png");
+    background-size: cover; 
+    height: 30px;
+    width:30px;
+    margin-right: 1%;
+}
+
+.link{
+    text-decoration: none;
+}
+.link:hover{
+    text-decoration: underline;
+}
