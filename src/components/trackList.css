@@ -1,100 +1,100 @@
 .track-block {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0% 1%;
-    font-size: 15px;
-    border: 1px solid #d0ced0;
-    border-radius: 6px;
-    background-color: white;
-    color: dimgrey;
+  padding: 3px 15px;
+  font-size: 15px;
+  box-shadow: 5px 5px 3px #d0ced0;
+  border-radius: 6px;
+  background-color: white;
+  color: dimgrey;
 }
 
-.trackList-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline-start: 0px;
-    padding: 0px 5px;
+.track-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline-start: 0px;
 }
 
-.trackList-item:hover {
-    border: 1px rgb(250, 229, 229);
-    background-color: rgb(248, 236, 236);
-    border-radius: 10px;
+.track-list-item:hover {
+  box-shadow: 3px 3px 2px rgb(250, 229, 229);
+  background-color: rgb(248, 236, 236);
+  border-radius: 6px;
 }
 
-.trackList-item:hover .music-button {
-    display: block;
-
+.track-list-item:hover .music-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .left-part-of-item {
-    display: flex;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 
 .track-album-block a:nth-child(1) {
-    font-weight: bold;
-    color: black;
+  font-weight: bold;
+  color: black;
 }
 
 .music-icon {
-    border-radius: 8px;
-    margin-right: 1%;
-    height: 50px;
-    width: 50px;
-    background-size: contain;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  border-radius: 8px;
+  margin-right: 1%;
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .music-button {
-    background-image: url('play.png');
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    border: none;
-    background-size: contain;
-    display: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  display: none;
+}
+
+svg {
+  size: 18px;
 }
 
 .link {
-    text-decoration: none;
-    color: dimgrey;
+  text-decoration: none;
+  color: dimgrey;
 }
 
 .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-@media(max-width:768px) {
-    .music-icon {
-        background-size: cover;
-        height: 45px;
-        width: 45px;
-    }
+@media (max-width: 768px) {
+  .music-icon {
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+  }
 
-    .track-block {
-        font-size: 12px;
-        margin-top: 2%;
-    }
+  .track-block {
+    font-size: 12px;
+    margin-top: 2%;
+  }
 
-    .trackList-item:hover {
-
-        border-radius: 6px;
-    }
+  .trackList-item:hover {
+    border-radius: 6px;
+  }
 }
 
-@media(max-width:576px) {
-    .music-icon {
-        background-size: cover;
-        height: 40px;
-        width: 40px;
-    }
+@media (max-width: 576px) {
+  .music-icon {
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+  }
 
-    .track-block {
-        font-size: 10px;
-    }
+  .track-block {
+    font-size: 10px;
+  }
 }

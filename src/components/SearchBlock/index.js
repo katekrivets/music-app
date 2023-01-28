@@ -1,3 +1,3 @@
-import SearchBlock from './SearchBlock.jsx';
+import SearchBlock from "./SearchBlock.jsx";
 
 export default SearchBlock;

@@ -1,3 +1,3 @@
-import Album from './Album.jsx';
+import Album from "./Album.jsx";
 
 export default Album;
