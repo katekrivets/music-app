@@ -1,10 +1,10 @@
 .track-block {
-  padding: 3px 15px;
+  padding: 4px 16px;
   font-size: 15px;
-  box-shadow: 5px 5px 3px #d0ced0;
-  border-radius: 6px;
-  background-color: white;
-  color: dimgrey;
+  box-shadow: var(--grey-shadow);
+  border-radius: var(--main-radius);
+  background-color: var(--white);
+  color: var(--grey);
 }
 
 .track-list-item {
@@ -12,12 +12,13 @@
   align-items: center;
   justify-content: space-between;
   padding-inline-start: 0px;
+  padding: 4px;
 }
 
 .track-list-item:hover {
-  box-shadow: 3px 3px 2px rgb(250, 229, 229);
-  background-color: rgb(248, 236, 236);
-  border-radius: 6px;
+  border: none;
+  background-color: var(--light-pink);
+  border-radius: var(--main-radius);
 }
 
 .track-list-item:hover .music-button {
@@ -35,11 +36,11 @@
 
 .track-album-block a:nth-child(1) {
   font-weight: bold;
-  color: black;
+  color: var(--black);
 }
 
 .music-icon {
-  border-radius: 8px;
+  border-radius: var(--main-radius);
   margin-right: 1%;
   height: 50px;
   width: 50px;
@@ -50,8 +51,8 @@
 }
 
 .music-button {
-  width: 30px;
-  height: 30px;
+  width: var(--icon-width);
+  height: var(--icon-height);
   border-radius: 30px;
   border: none;
   display: none;
@@ -83,7 +84,7 @@ svg {
   }
 
   .trackList-item:hover {
-    border-radius: 6px;
+    border-radius: var(--main-radius);
   }
 }
 

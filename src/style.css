@@ -1,6 +1,18 @@
+:root {
+  --grey-shadow: 0px 0px 10px rgb(224, 222, 222);
+  --main-radius: 6px;
+  --icon-width: 30px;
+  --icon-height: 30px;
+  --grey: #787878;
+  --white: #ffffff;
+  --medium-grey: #f8f8f8;
+  --light-pink: #fff1f1;
+  --black: #000000;
+  --light-grey: #e1dfdf;
+}
 body {
   margin: 0;
-  background-color: rgb(248, 248, 248);
+  background-color: var(--medium-grey);
   padding: 2% 10% 2% 10%;
 }
 * {
