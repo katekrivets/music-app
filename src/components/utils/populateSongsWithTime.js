@@ -3,8 +3,11 @@
 // }
 import songDuration from "./time.js";
 
-function populateSongsWithTime(itemsArray, ms) {
-  itemsArray["duration"] = songDuration(ms);
-  return itemsArray;
+function populateSongsWithTime(itemsArray) {
+  return itemsArray.map((item) => {
+    let durationOfSong = songDuration(item.duration_ms);
+    return { ...item, duration: durationOfSong };
+  });
 }
+
 export default populateSongsWithTime;
