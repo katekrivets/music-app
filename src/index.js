@@ -1,10 +1,13 @@
-import _ from 'lodash';
-import React from 'react';
-import * as ReactDOMClient from 'react-dom/client';
-import './style.css';
-import Container from './components/Container';
+import _ from "lodash";
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
+import "./style.css";
+import App from "./components/App.jsx";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOMClient.createRoot(document.getElementById("root"));
 root.render(
-    <Container />
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );

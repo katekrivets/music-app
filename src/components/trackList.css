@@ -1,0 +1,37 @@
+.track-block {
+  padding: 4px 16px;
+  font-size: 15px;
+  box-shadow: var(--grey-shadow);
+  border-radius: var(--main-radius);
+  background-color: var(--white);
+  color: var(--grey);
+}
+
+@media (max-width: 768px) {
+  .music-icon {
+    background-size: cover;
+    height: 45px;
+    width: 45px;
+  }
+
+  .track-block {
+    font-size: 12px;
+    margin-top: 2%;
+  }
+
+  .trackList-item:hover {
+    border-radius: var(--main-radius);
+  }
+}
+
+@media (max-width: 576px) {
+  .music-icon {
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+  }
+
+  .track-block {
+    font-size: 10px;
+  }
+}
