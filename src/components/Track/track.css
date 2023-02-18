@@ -1,0 +1,127 @@
+.track-component {
+  color: var(--grey);
+}
+.exact-track-block {
+  display: flex;
+  align-items: center;
+  box-shadow: var(--grey-shadow);
+  border-radius: 6px;
+  width: 100%;
+  background-color: var(--white);
+}
+
+.image-block {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  border-radius: var(--main-radius);
+  margin: 20px 0px 20px 20px;
+}
+.description-of-track {
+  padding: 0px 0px 60px 20px;
+  width: 70%;
+  height: 200px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top-description {
+  border-bottom: 1px solid var(--light-grey);
+  margin-right: 10px;
+}
+.track-name {
+  font-weight: bold;
+  color: var(--black);
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.track-name-box {
+  margin-left: 6px;
+}
+.track-action {
+  display: flex;
+  margin: 8px 0px;
+}
+.track-action div:nth-child(2) {
+  margin-left: 20px;
+}
+.bottom-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+button {
+  width: var(--icon-width);
+  height: var(--icon-height);
+  border-radius: 30px;
+  border: none;
+  background-color: var(--white);
+}
+.play-track {
+  display: flex;
+  align-items: center;
+}
+
+.time {
+  padding-right: 10px;
+}
+@media (max-width: 576px) {
+  .image-track-block {
+    width: 100px;
+    height: 100px;
+    margin: 10px 0px 10px 10px;
+  }
+  .description-of-track {
+    padding: 0px 0px 30px 10px;
+
+    height: 100px;
+  }
+  .track-name {
+    font-weight: bold;
+    color: var(--black);
+    font-size: 10px;
+  }
+  * {
+    font-size: 6px;
+  }
+  button {
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+  }
+  .bottom-description {
+    margin-top: 6px;
+  }
+}
+@media (max-width: 768px) {
+  .image-track-block {
+    width: 160px;
+    height: 160px;
+    margin: 16px 0px 16px 16px;
+  }
+  .description-of-track {
+    padding: 0px 0px 40px 14px;
+    height: 140px;
+  }
+  .track-name {
+    font-weight: bold;
+    color: var(--black);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  * {
+    font-size: 8px;
+  }
+  button {
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .bottom-description {
+    margin-top: 8px;
+  }
+  .track-name-box {
+    margin-left: 6px;
+  }
+}

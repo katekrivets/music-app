@@ -4,17 +4,22 @@
   --icon-width: 30px;
   --icon-height: 30px;
   --grey: #787878;
+  --grey-for-button: #c2c1c1;
   --white: #ffffff;
   --medium-grey: #f8f8f8;
   --light-pink: #fff1f1;
   --black: #000000;
   --light-grey: #e1dfdf;
+  --margin-top-bottom: 20px 0px;
+  --border-radius-all-corners: 6px;
 }
 body {
   margin: 0;
   background-color: var(--medium-grey);
   padding: 2% 10% 2% 10%;
+  color: var(--grey);
 }
 * {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
 }

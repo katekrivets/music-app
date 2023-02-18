@@ -1,0 +1,11 @@
+.track-action {
+  display: flex;
+  margin: 8px 0px;
+}
+.track-action div:nth-child(2) {
+  margin-left: 20px;
+}
+.click-button {
+  border: none;
+  background-color: var(--white);
+}
