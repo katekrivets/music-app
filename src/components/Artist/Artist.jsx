@@ -6,22 +6,26 @@ import "./artist.css";
 import TrackListItem from "../TrackListItem/TrackListItem.jsx";
 function Artist(props) {
   const { artistId } = useParams();
-  const albumArtistArray = props.itemsArray.filter(
-    (itm) => itm.artists[0].id === artistId
+  const albumArtistArray = props.itemsArray.filter((itm) =>
+    itm.artists.map((artist) => artist.id.includes(artistId))
   );
-  const albumArtistObject = albumArtistArray[0].artists[0];
+  console.log(albumArtistArray);
+  const albumArtistObject = albumArtistArray.find((element) =>
+    element.artists.map((el) => el.id === artistId)
+  );
+  console.log(albumArtistObject);
   return (
     <div className="artist-component">
       <div className="artist-image-box">
-        <div className="artist-name">{albumArtistObject.name}</div>
+        <div className="artist-name">{albumArtistObject.artists[0].name}</div>
         <div className="artist-actions">
-          <button className="button">
+          <button className="button  grey-button">
             <GrAdd />
-            Подписаться
+            <span className="text-in-button">Подписаться</span>
           </button>
           <button className="button">
             <GrPlayFill />
-            Слушать
+            <span className="text-in-button">Cлушать</span>
           </button>
         </div>
       </div>

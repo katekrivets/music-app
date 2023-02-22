@@ -2,7 +2,7 @@ import { React } from "react";
 import { Link } from "react-router-dom";
 import "./trackListItem.css";
 import { GrPlayFill } from "react-icons/gr";
-import Duration from "../Duration/Duration.jsx";
+import parseDurationToString from "../utils/parseDurationToString.js";
 function TrackListItem(props) {
   return (
     <div className="track-list-item">
@@ -43,9 +43,7 @@ function TrackListItem(props) {
           </div>
         </div>
       </div>
-      <div className="time">
-        <Duration track={props.track} />
-      </div>
+      <div className="time">{parseDurationToString(props.track)}</div>
     </div>
   );
 }

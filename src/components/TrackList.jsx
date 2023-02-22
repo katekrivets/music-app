@@ -1,7 +1,6 @@
 import React from "react";
 import "./trackList.css";
 import TrackListItem from "./TrackListItem";
-
 function TrackList(props) {
   return (
     <div className="track-block">
@@ -11,5 +10,4 @@ function TrackList(props) {
     </div>
   );
 }
-
 export default TrackList;

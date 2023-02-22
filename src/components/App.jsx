@@ -5,8 +5,8 @@ import SearchBlock from "./SearchBlock";
 import Album from "./Album";
 import Track from "./Track";
 import Artist from "./Artist";
-import populateSongsWithTime from "C:/Users/Владислав/Desktop/Dasha/task2/src/components/utils/populateSongsWithTime.js";
-import songs from "C:/Users/Владислав/Desktop/Dasha/task2/src/components/utils/songs";
+import populateSongsWithTime from "./utils/populateSongsWithTime.js";
+import songs from "./utils/songs";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ class App extends Component {
               element={<TrackList itemsArray={this.state.itemsArray} />}
             />
             <Route
-              path="/:userId"
+              path="/:trackId"
               element={<Track itemsArray={this.state.itemsArray} />}
             />
             <Route
@@ -41,5 +41,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

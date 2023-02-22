@@ -2,11 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "./track.css";
 import Actions from "../Actions/Actions.jsx";
-import Duration from "../Duration/Duration.jsx";
+import parseDurationToString from "../utils/parseDurationToString.js";
 import { GrPlayFill } from "react-icons/gr";
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
 function Track(props) {
-  const { userId } = useParams();
-  const trackArray = props.itemsArray.filter((itm) => itm.id === userId);
+  const { trackId } = useParams();
+  const trackArray = props.itemsArray.filter((itm) => itm.id === trackId);
   const trackObject = trackArray[0];
   return (
     <div className="track-component">
@@ -30,18 +32,22 @@ function Track(props) {
           <div className="bottom-description">
             <div className="play-track">
               <div className="play-button">
-                <button>
+                <button className="mobile-view-button">
+                  <GrPrevious />
+                </button>
+                <button className="play-icon">
                   <GrPlayFill />
                 </button>
+                <button className="mobile-view-button">
+                  <GrNext />
+                </button>
               </div>
-              <div>
+              <div className="play-track-text">
                 {trackObject.album.artists.map((artist) => artist.name)} -{" "}
                 {trackObject.name}
               </div>
             </div>
-            <div className="time">
-              <Duration track={trackObject} />
-            </div>
+            <div className="time">{parseDurationToString(trackObject)}</div>
           </div>
         </div>
       </div>

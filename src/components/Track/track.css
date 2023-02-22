@@ -39,13 +39,7 @@
 .track-name-box {
   margin-left: 6px;
 }
-.track-action {
-  display: flex;
-  margin: 8px 0px;
-}
-.track-action div:nth-child(2) {
-  margin-left: 20px;
-}
+
 .bottom-description {
   display: flex;
   align-items: center;
@@ -58,6 +52,9 @@ button {
   border: none;
   background-color: var(--white);
 }
+.mobile-view-button {
+  display: none;
+}
 .play-track {
   display: flex;
   align-items: center;
@@ -67,31 +64,46 @@ button {
   padding-right: 10px;
 }
 @media (max-width: 576px) {
-  .image-track-block {
-    width: 100px;
-    height: 100px;
+  .image-block {
+    width: 200px;
+    height: 200px;
     margin: 10px 0px 10px 10px;
   }
-  .description-of-track {
-    padding: 0px 0px 30px 10px;
 
-    height: 100px;
-  }
-  .track-name {
-    font-weight: bold;
-    color: var(--black);
-    font-size: 10px;
-  }
-  * {
-    font-size: 6px;
-  }
-  button {
-    border-radius: 20px;
-    width: 20px;
-    height: 20px;
+  .exact-track-block {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
   .bottom-description {
-    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .play-icon {
+    border-radius: 32px;
+    border: 1px solid var(--grey-for-button);
+    background-color: var(--light-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .play-icon :first-child,
+  .mobile-view-button :first-child {
+    font-size: 12px;
+  }
+
+  .play-track-text {
+    display: none;
+  }
+  .time {
+    display: none;
+  }
+  .mobile-view-button {
+    display: block;
+  }
+  .play-button {
+    display: flex;
   }
 }
 @media (max-width: 768px) {
@@ -111,7 +123,7 @@ button {
     margin-bottom: 4px;
   }
   * {
-    font-size: 8px;
+    font-size: 10px;
   }
   button {
     border-radius: 30px;

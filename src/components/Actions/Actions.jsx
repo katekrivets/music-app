@@ -9,13 +9,13 @@ function Actions() {
         <button className="click-button">
           <GrAdd />
         </button>
-        Добавить
+        <div className="action-button-text">Добавить</div>
       </div>
-      <div>
+      <div className="share">
         <button className="click-button">
           <GrRedo />
         </button>
-        Поделиться
+        <div className="action-button-text">Поделиться</div>
       </div>
     </div>
   );
