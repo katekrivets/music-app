@@ -1,0 +1,35 @@
+.track-action {
+  display: flex;
+  margin: 8px 0px;
+}
+
+.click-button {
+  border: none;
+  background-color: var(--white);
+  margin: 0;
+}
+.add,
+.share {
+  display: flex;
+  align-items: center;
+}
+.share {
+  margin-left: 16px;
+}
+
+@media (max-width: 576px) {
+  .action-button-text {
+    display: none;
+  }
+  .click-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .click-button :first-child {
+    font-size: 12px;
+  }
+  .track-action {
+    justify-content: space-between;
+  }
+}
