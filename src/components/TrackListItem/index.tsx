@@ -1,3 +1,3 @@
-import TrackListItem from "./TrackListItem.jsx";
+import TrackListItem from "./TrackListItem";
 
 export default TrackListItem;

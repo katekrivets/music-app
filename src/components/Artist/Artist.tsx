@@ -4,14 +4,14 @@ import { GrAdd } from "react-icons/gr";
 import { GrPlayFill } from "react-icons/gr";
 import "./artist.css";
 import TrackListItem from "../TrackListItem/TrackListItem";
-function Artist(props) {
+function Artist(props: { itemsArray: any[] }) {
   const { artistId } = useParams();
-  const albumArtistArray = props.itemsArray.filter((itm) =>
-    itm.artists.map((artist) => artist.id.includes(artistId))
+  const albumArtistArray = props.itemsArray.filter((itm: any) =>
+    itm.artists.map((artist: any) => artist.id.includes(artistId))
   );
   console.log(albumArtistArray);
-  const albumArtistObject = albumArtistArray.find((element) =>
-    element.artists.map((el) => el.id === artistId)
+  const albumArtistObject = albumArtistArray.find((element: any) =>
+    element.artists.map((el: any) => el.id === artistId)
   );
   console.log(albumArtistObject);
   return (
