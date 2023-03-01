@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
-import TrackList from "./TrackList.jsx";
+import TrackList from "./TrackListItem";
 import SearchBlock from "./SearchBlock";
 import Album from "./Album";
 import Track from "./Track";
 import Artist from "./Artist";
 import populateSongsWithTime from "./utils/populateSongsWithTime.js";
-import songs from "./utils/songs";
-class App extends Component {
+import * as songs from "./utils/songs.json";
+class App extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {

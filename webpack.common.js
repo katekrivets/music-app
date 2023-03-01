@@ -4,7 +4,10 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: "./src/index.js",
+    app: "./src/index.jsx",
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -16,7 +19,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].bundle.tsx",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -25,6 +28,11 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
       },
       {
         test: /\.jsx?$/, // обновляем регулярное выражение для поддержки jsx

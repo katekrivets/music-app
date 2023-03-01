@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./album.css";
-import parseDurationToString from "../utils/parseDurationToString.js";
-import Actions from "../Actions/Actions.jsx";
+import parseDurationToString from "../utils/parseDurationToString";
+import Actions from "../Actions/Actions";
 function Album(props) {
   const { albumId } = useParams();
   const tracksInAlbumArray = props.itemsArray.filter(

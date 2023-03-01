@@ -1,0 +1,12 @@
+import { BaseTrackInfo } from "./BaseInfo";
+export interface SearchTrack {
+  results: SearchTrackInfo;
+}
+interface SearchTrackInfo {
+  trackmatches: { track: Array<TrackFullInfo> };
+}
+interface TrackFullInfo extends BaseTrackInfo {
+  name: string;
+  listeners: string;
+  mbid: string;
+}

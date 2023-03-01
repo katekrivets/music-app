@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import { GrPlayFill } from "react-icons/gr";
 import "./artist.css";
-import TrackListItem from "../TrackListItem/TrackListItem.jsx";
+import TrackListItem from "../TrackListItem/TrackListItem";
 function Artist(props) {
   const { artistId } = useParams();
   const albumArtistArray = props.itemsArray.filter((itm) =>

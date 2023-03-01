@@ -1,8 +1,8 @@
-import { React } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./trackListItem.css";
 import { GrPlayFill } from "react-icons/gr";
-import parseDurationToString from "../utils/parseDurationToString.js";
+import parseDurationToString from "../utils/parseDurationToString";
 function TrackListItem(props) {
   return (
     <div className="track-list-item">
