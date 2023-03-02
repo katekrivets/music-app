@@ -1,12 +1,6 @@
-export interface BaseInfoWithId {
-  mbid: string;
+export interface Base {
   url: string;
   name: string;
-}
-export interface BaseInfoWithImage {
-  url: string;
-  name: string;
-  image: Array<Image>;
 }
 export interface BaseTrackInfo {
   artist: string;
@@ -22,4 +16,16 @@ export interface Wiki {
   published: string;
   summary: string;
   content: string;
+}
+export interface Stats {
+  listeners: string;
+  playcount: string;
+}
+interface Link {
+  "#text": string;
+  rel: string;
+  href: string;
+}
+export interface Bio extends Wiki {
+  links: { link: Link };
 }

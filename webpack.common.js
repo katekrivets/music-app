@@ -15,7 +15,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       inject: true,
-      template: path.resolve(__dirname, "/assets/index.html"),
+      template: path.resolve(__dirname, "assets/index.html"),
     }),
   ],
   output: {
@@ -33,7 +33,7 @@ module.exports = {
         // Include ts, tsx, js, and jsx files.
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

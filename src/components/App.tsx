@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
-import TrackList from "./TrackListItem"; // где TrackList? у тебя потеряна прослойка
+import TrackList from "./TrackList";
 import SearchBlock from "./SearchBlock";
 import Album from "./Album";
 import Track from "./Track";
@@ -16,30 +16,31 @@ class App extends Component<any, any> {
     };
   }
   render() {
-    return (
-      this.state.itemsArray ?
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<SearchBlock />}>
-              <Route
-                index
-                element={<TrackList itemsArray={this.state.itemsArray} />}
-              />
-              <Route
-                path="/:trackId"
-                element={<Track itemsArray={this.state.itemsArray} />}
-              />
-              <Route
-                path="/album/:albumId"
-                element={<Album itemsArray={this.state.itemsArray} />}
-              />
-              <Route
-                path="/artist/:artistId"
-                element={<Artist itemsArray={this.state.itemsArray} />}
-              />
-            </Route>
-          </Routes>
-        </div> : <></>
+    return this.state.itemsArray ? (
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<SearchBlock />}>
+            <Route
+              index
+              element={<TrackList itemsArray={this.state.itemsArray} />}
+            />
+            <Route
+              path="/:trackId"
+              element={<Track itemsArray={this.state.itemsArray} />}
+            />
+            <Route
+              path="/album/:albumId"
+              element={<Album itemsArray={this.state.itemsArray} />}
+            />
+            <Route
+              path="/artist/:artistId"
+              element={<Artist itemsArray={this.state.itemsArray} />}
+            />
+          </Route>
+        </Routes>
+      </div>
+    ) : (
+      <></>
     );
   }
 }

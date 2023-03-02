@@ -4,7 +4,7 @@ import "./trackListItem.css";
 import { GrPlayFill } from "react-icons/gr";
 import parseDurationToString from "../utils/parseDurationToString";
 function TrackListItem(props: any) {
-  console.log(props) // посмотри что тут приходит
+  console.log(props); // посмотри что тут приходит
   return (
     <div className="track-list-item">
       <div className="left-part-of-item">
@@ -21,7 +21,7 @@ function TrackListItem(props: any) {
         <div>
           <div>
             <div className="track-album-block">
-              <Link to={props.track.id} className="link">
+              <Link to={`/${props.track.id}`} className="link">
                 {props.track.name}
               </Link>
               <span> - </span>

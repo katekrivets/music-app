@@ -1,6 +1,9 @@
 import { Artist } from "../types/Artist";
 import { Album } from "../types/Album";
 import { Track } from "../types/Track";
+import { SearchArtist } from "../types/Artist";
+import { SearchAlbum } from "../types/Album";
+import { SearchTrack } from "../types/Track";
 const baseInfo = {
   root: "https://ws.audioscrobbler.com/2.0/",
   api_key: "d10c4c81eece480e2b0a973fa614a2aa",
@@ -15,7 +18,7 @@ export const getArtistById = (artist_id: string): Promise<Artist> => {
     `${baseInfo.root}?method=artist.getinfo&api_key=${baseInfo.api_key}&mbid=${artist_id}`
   ).then((response) => response.json());
 };
-export const searchArtist = (artist_name: string): Promise<Artist> => {
+export const searchArtist = (artist_name: string): Promise<SearchArtist> => {
   return fetch(
     `${baseInfo.root}?method=artit.search&api_key=${baseInfo.api_key}&artist=${artist_name}`
   ).then((response) => response.json());
@@ -37,7 +40,7 @@ export const getAlbumtById = (
     `${baseInfo.root}?method=album.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}&mbid=${album_id}`
   ).then((response) => response.json());
 };
-export const searchAlbum = (album_name: string): Promise<Album> => {
+export const searchAlbum = (album_name: string): Promise<SearchAlbum> => {
   return fetch(
     `${baseInfo.root}?method=album.search&api_key=${baseInfo.api_key}&album=${album_name}`
   ).then((response) => response.json());
@@ -59,7 +62,7 @@ export const getTracktById = (
     `${baseInfo.root}?method=track.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}&mbid=${track_id}`
   ).then((response) => response.json());
 };
-export const searchTrack = (track_name: string): Promise<Track> => {
+export const searchTrack = (track_name: string): Promise<SearchTrack> => {
   return fetch(
     `${baseInfo.root}?method=track.search&api_key=${baseInfo.api_key}&track=${track_name}`
   ).then((response) => response.json());
