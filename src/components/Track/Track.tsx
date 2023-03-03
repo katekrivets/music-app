@@ -1,14 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./track.css";
-import Actions from "../Actions/Actions.jsx";
-import parseDurationToString from "../utils/parseDurationToString.js";
+import Actions from "../Actions/Actions";
+import parseDurationToString from "../utils/parseDurationToString";
 import { GrPlayFill } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
-function Track(props) {
+function Track(props: any) {
   const { trackId } = useParams();
-  const trackArray = props.itemsArray.filter((itm) => itm.id === trackId);
+  const trackArray = props.itemsArray.filter((itm: any) => itm.id === trackId);
   const trackObject = trackArray[0];
   return (
     <div className="track-component">
@@ -24,7 +24,7 @@ function Track(props) {
             <div className="track-name-box">
               <div className="track-name">{trackObject.name}</div>
               <div>
-                {trackObject.album.artists.map((artist) => artist.name)}
+                {trackObject.album.artists.map((artist: any) => artist.name)}
               </div>
             </div>
             <Actions />
@@ -43,7 +43,7 @@ function Track(props) {
                 </button>
               </div>
               <div className="play-track-text">
-                {trackObject.album.artists.map((artist) => artist.name)} -{" "}
+                {trackObject.album.artists.map((artist: any) => artist.name)} -{" "}
                 {trackObject.name}
               </div>
             </div>

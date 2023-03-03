@@ -4,7 +4,10 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: "./src/index.js",
+    app: "./src/index.tsx",
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -12,7 +15,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       inject: true,
-      template: path.resolve(__dirname, "index.html"),
+      template: path.resolve(__dirname, "assets/index.html"),
     }),
   ],
   output: {
@@ -27,17 +30,10 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.jsx?$/, // обновляем регулярное выражение для поддержки jsx
+        // Include ts, tsx, js, and jsx files.
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              "@babel/preset-env",
-              ["@babel/preset-react", { runtime: "automatic" }],
-            ],
-          },
-        },
+        loader: "babel-loader",
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

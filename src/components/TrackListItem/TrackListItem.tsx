@@ -1,9 +1,10 @@
-import { React } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./trackListItem.css";
 import { GrPlayFill } from "react-icons/gr";
-import parseDurationToString from "../utils/parseDurationToString.js";
-function TrackListItem(props) {
+import parseDurationToString from "../utils/parseDurationToString";
+function TrackListItem(props: any) {
+  console.log(props); // посмотри что тут приходит
   return (
     <div className="track-list-item">
       <div className="left-part-of-item">
@@ -20,7 +21,7 @@ function TrackListItem(props) {
         <div>
           <div>
             <div className="track-album-block">
-              <Link to={props.track.id} className="link">
+              <Link to={`/${props.track.id}`} className="link">
                 {props.track.name}
               </Link>
               <span> - </span>
@@ -30,7 +31,7 @@ function TrackListItem(props) {
               </Link>
             </div>
             <div className="artist">
-              {props.track.album.artists.map((artist) => (
+              {props.track.album.artists.map((artist: any) => (
                 <Link
                   to={`/artist/${artist.id}`}
                   className="link"
