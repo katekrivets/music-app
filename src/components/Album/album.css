@@ -43,11 +43,11 @@
   padding-bottom: 12px;
 }
 .album-track-box {
+  color: var(--black);
+  margin-right: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--black);
-  margin-right: 20px;
 }
 .album-track {
   margin-left: 6px;
