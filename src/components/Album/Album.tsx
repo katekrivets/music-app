@@ -13,10 +13,27 @@ type MyParams = {
 function Album(props: { itemsArray: any[] }) {
   const { albumId } = useParams<keyof MyParams>() as MyParams;
   const [albumObject, setAlbumObject] = useState<any>();
-  const [artistName, setartistName] = useState<any>();
   const [isLoading, setIsLoading] = useState<any>(true);
   const [url, setUrl] = useState<any>(null);
+  let exactItemById = props.itemsArray.filter((el) =>
+    el.releases.find((item: any) => {
+      return item.id === albumId;
+    })
+  );
+  console.log(props.itemsArray);
+  console.log(exactItemById);
+  let exactAlbumItem = exactItemById[0].releases.filter((album: any) => {
+    //id+name
+    album.id === albumId;
+    return album;
+  });
 
+  console.log(exactAlbumItem);
+  console.log(exactAlbumItem[0].id);
+  console.log(exactAlbumItem[0]["artist-credit"][0].name);
+  console.log(albumId);
+  // let artistName = exactItemById[0]["artist-credit"][0].name;
+  // let artistId = exactItemById[0]["artist-credit"][0].artist.id;
   React.useEffect(() => {
     getAlbumById(albumId)
       .then((result) => {
@@ -28,7 +45,7 @@ function Album(props: { itemsArray: any[] }) {
           .then((response) => {
             if (response.status === 404) {
               console.log("SUCCESS", response.status);
-              setUrl(`./musicplaceholder.jpg`);
+              setUrl(`../musicplaceholder.jpg`);
             } else {
               setUrl(response.url);
             }
@@ -37,12 +54,6 @@ function Album(props: { itemsArray: any[] }) {
       })
       .then((r) => {
         setIsLoading(false);
-        //в типизации нет имени артиста, пришлось залезть в itemsArray
-        const exactItemById = props.itemsArray.find(
-          (item) => item.releases[0].id === albumId
-        );
-        console.log(props.itemsArray);
-        setartistName(exactItemById["artist-credit"][0].name);
       });
   }, [albumId]);
 
@@ -52,6 +63,7 @@ function Album(props: { itemsArray: any[] }) {
     const tracksArrayWithTime = populateSongsWithTime(
       albumObject.media[0].tracks
     );
+    //в типизации нет имени артиста, пришлось залезть в itemsArray
 
     return (
       <div className="album-component">
@@ -68,12 +80,13 @@ function Album(props: { itemsArray: any[] }) {
 
               <div className="artist">
                 <Link
-                  to={`/artist/${artistName}`}
+                  to={`/artist/${exactAlbumItem[0].id}`}
                   className="link"
-                  key={artistName}
+                  key={exactAlbumItem[0].id}
                 >
-                  {artistName}
+                  {exactAlbumItem[0]["artist-credit"][0].name}
                 </Link>
+                {/* ))} */}
               </div>
             </div>
             <Actions />
@@ -90,12 +103,14 @@ function Album(props: { itemsArray: any[] }) {
                   <span>
                     {" "}
                     <Link
-                      to={`/artist/${artistName}`}
+                      to={`/artist/${exactAlbumItem[0].id}`}
                       className="link"
-                      key={artistName}
+                      key={exactAlbumItem[0].id}
                     >
-                      {artistName}
-                    </Link>{" "}
+                      {exactAlbumItem[0]["artist-credit"][0].name}
+                    </Link>
+                    {/* )
+                    )}{" "} */}
                   </span>{" "}
                   -{" "}
                   <Link to={`/${item.recording.id}`} className="link">

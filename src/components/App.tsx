@@ -36,6 +36,7 @@ class App extends Component<ComponentProps, ComponentState> {
       itemsArray: populateSongsWithTime(result),
     });
   }
+
   componentDidUpdate(
     prevProps: Readonly<any>,
     prevState: Readonly<any>,
@@ -63,7 +64,10 @@ class App extends Component<ComponentProps, ComponentState> {
               element={<TrackList itemsArray={this.state.itemsArray} />}
             />
             <Route path="/:trackId" element={<Track />} />
-            <Route path="/artist/:artistId" element={<Artist />} />
+            <Route
+              path="/artist/:artistId"
+              element={<Artist itemsArrayChange={this.itemsArrayChange} />}
+            />
             <Route
               path="/album/:albumId"
               element={<Album itemsArray={this.state.itemsArray} />}

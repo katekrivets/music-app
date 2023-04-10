@@ -11,7 +11,7 @@ import populateSongsWithTime from "../utils/populateSongsWithTime";
 type MyParams = {
   artistId: string;
 };
-function Artist() {
+function Artist(props: any) {
   const { artistId } = useParams<keyof MyParams>() as MyParams;
   const [artistObject, setArtistObject] = useState<any>();
   const [tracksArray, setTracksArray] = useState<any>();
@@ -27,15 +27,11 @@ function Artist() {
         console.log(result.artists[0].name);
       }
     });
-    const getTrack = getTrackByArtistId(artistId)
-      .then((res: any) => {
-        console.log(res);
-        setTracksArray(populateSongsWithTime(res.recordings));
-        return res;
-      })
-      .then((a) => {
-        console.log(a);
-      });
+    const getTrack = getTrackByArtistId(artistId).then((res: any) => {
+      console.log(res);
+      setTracksArray(populateSongsWithTime(res.recordings));
+      props.itemsArrayChange(populateSongsWithTime(res.recordings));
+    });
     //после выполнения обоих запросов исключаем loader
     Promise.all([getArtist, getTrack]).then((r) => {
       setIsLoading(false);

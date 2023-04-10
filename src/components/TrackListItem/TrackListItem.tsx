@@ -14,7 +14,7 @@ function TrackListItem(props: any) {
       .then((response) => {
         if (response.status === 404) {
           console.log("SUCCESS", response.status);
-          setUrl(`./musicplaceholder.jpg`);
+          setUrl(`../musicplaceholder.jpg`);
         } else {
           setUrl(response.url);
         }
@@ -58,13 +58,13 @@ function TrackListItem(props: any) {
                 </Link>
               </div>
               <div className="artist">
-                {props.track["artist-credit"].map((artist: any) => (
+                {props.track["artist-credit"].map((artistItem: any) => (
                   <Link
-                    to={`/artist/${artist.name}`}
+                    to={`/artist/${artistItem.artist.id}`}
                     className="link"
-                    key={artist.name}
+                    key={artistItem.artist.id}
                   >
-                    {artist.name}{" "}
+                    {artistItem.name}{" "}
                   </Link>
                 ))}
               </div>

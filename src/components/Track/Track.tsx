@@ -39,7 +39,7 @@ function Track(): any {
       .then((response) => {
         if (response.status === 404) {
           console.log("SUCCESS", response.status);
-          setUrl(`./musicplaceholder.jpg`);
+          setUrl(`../musicplaceholder.jpg`);
         } else {
           setUrl(response.url);
         }

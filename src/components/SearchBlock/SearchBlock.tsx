@@ -11,7 +11,10 @@ function SearchBlock(props: any) {
         <form className="search-form">
           <input
             value={props.value}
-            onChange={(event) => props.handlerChange(event.target.value)} //при изменении ввода value попадает в поле searchblock
+            onChange={(event) => {
+              //при изменении ввода value попадает в поле searchblock
+              props.handlerChange(event.target.value);
+            }}
             type="search"
             name="search"
             className="search-input"
@@ -19,7 +22,7 @@ function SearchBlock(props: any) {
         </form>
         <button
           onClick={() => {
-            //запрос по методу searchTrack с записьюрезультата в state компонента App
+            //запрос по методу searchTrack с записью результата в state компонента App
             searchTrack(props.value)
               .then((res) => res.recordings)
               .then((result) => props.itemsArrayChange(result));
