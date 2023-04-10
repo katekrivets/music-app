@@ -32,6 +32,7 @@ function Artist(props: any) {
       setTracksArray(populateSongsWithTime(res.recordings));
       props.itemsArrayChange(populateSongsWithTime(res.recordings));
     });
+
     //после выполнения обоих запросов исключаем loader
     Promise.all([getArtist, getTrack]).then((r) => {
       setIsLoading(false);

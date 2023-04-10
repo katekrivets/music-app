@@ -30,6 +30,7 @@ class App extends Component<ComponentProps, ComponentState> {
       value: event,
     });
   }
+
   //обновляет itemsArray в state
   itemsArrayChange(result: any) {
     this.setState({
@@ -60,6 +61,7 @@ class App extends Component<ComponentProps, ComponentState> {
             }
           >
             <Route
+              path="/"
               index
               element={<TrackList itemsArray={this.state.itemsArray} />}
             />
