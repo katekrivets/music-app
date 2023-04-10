@@ -32,8 +32,7 @@ function Album(props: { itemsArray: any[] }) {
   console.log(exactAlbumItem[0].id);
   console.log(exactAlbumItem[0]["artist-credit"][0].name);
   console.log(albumId);
-  // let artistName = exactItemById[0]["artist-credit"][0].name;
-  // let artistId = exactItemById[0]["artist-credit"][0].artist.id;
+
   React.useEffect(() => {
     getAlbumById(albumId)
       .then((result) => {
@@ -45,7 +44,7 @@ function Album(props: { itemsArray: any[] }) {
           .then((response) => {
             if (response.status === 404) {
               console.log("SUCCESS", response.status);
-              setUrl(`../musicplaceholder.jpg`);
+              setUrl(`musicplaceholder.jpg`);
             } else {
               setUrl(response.url);
             }

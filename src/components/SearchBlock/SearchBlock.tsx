@@ -22,6 +22,9 @@ function SearchBlock(props: any) {
         </form>
         <button
           onClick={() => {
+            // if ((props.value = "")) {
+            //   props.itemsArrayChange("Your searching value is Empty");
+            // } else {
             //запрос по методу searchTrack с записью результата в state компонента App
             searchTrack(props.value)
               .then((res) => res.recordings)
