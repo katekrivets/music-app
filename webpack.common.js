@@ -1,18 +1,24 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: {
     app: "./src/index.tsx",
   },
   resolve: {
-    alias: { images: path.resolve(__dirname, "assets/") },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
     new CleanWebpackPlugin(),
-
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "assets/images"),
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       inject: true,
@@ -39,10 +45,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
-        loader: "file-loader",
-        options: {
-          name: "assets/musicplaceholder.jpg",
-        },
       },
     ],
   },
