@@ -26,12 +26,17 @@ function TrackListItem(props: any) {
       .catch((err) => console.log(err));
   }, [props.track.releases[0].id]);
 
-  if (isLoading === true) {
-    return <Loader />;
-  } else {
-    return (
-      <div className="track-list-item">
-        <div className="left-part-of-item">
+  // if (isLoading === true) {
+  //   return;
+  // } else {
+  return (
+    <div className="track-list-item">
+      <div className="left-part-of-item">
+        {isLoading === true ? (
+          <div className="music-icon">
+            <Loader />
+          </div>
+        ) : (
           <div
             className="music-icon"
             style={{
@@ -42,38 +47,39 @@ function TrackListItem(props: any) {
               <GrPlayFill />
             </button>
           </div>
+        )}
+        <div>
           <div>
-            <div>
-              <div className="track-album-block">
-                <Link to={`/${props.track.id}`} className="link">
-                  {props.track.title}
-                </Link>
-                <span> - </span>
+            <div className="track-album-block">
+              <Link to={`/${props.track.id}`} className="link">
+                {props.track.title}
+              </Link>
+              <span> - </span>
+              <Link
+                to={`/album/${props.track.releases[0].id}`}
+                className="link"
+              >
+                {" "}
+                {props.track.releases[0].title}
+              </Link>
+            </div>
+            <div className="artist">
+              {props.track["artist-credit"].map((artistItem: any) => (
                 <Link
-                  to={`/album/${props.track.releases[0].id}`}
+                  to={`/artist/${artistItem.artist.id}`}
                   className="link"
+                  key={artistItem.artist.id}
                 >
-                  {" "}
-                  {props.track.releases[0].title}
+                  {artistItem.name}{" "}
                 </Link>
-              </div>
-              <div className="artist">
-                {props.track["artist-credit"].map((artistItem: any) => (
-                  <Link
-                    to={`/artist/${artistItem.artist.id}`}
-                    className="link"
-                    key={artistItem.artist.id}
-                  >
-                    {artistItem.name}{" "}
-                  </Link>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
-        <div className="time">{parseDurationToString(props.track)}</div>
       </div>
-    );
-  }
+      <div className="time">{parseDurationToString(props.track)}</div>
+    </div>
+  );
 }
+// }
 export default TrackListItem;
