@@ -7,6 +7,7 @@ module.exports = {
     app: "./src/index.tsx",
   },
   resolve: {
+    alias: { images: path.resolve(__dirname, "assets/") },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
@@ -38,6 +39,10 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+        loader: "file-loader",
+        options: {
+          name: "assets/musicplaceholder.jpg",
+        },
       },
     ],
   },
