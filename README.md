@@ -1,15 +1,17 @@
 
 # Приложения для поиска любимых песен
-## What I've done:
-*added components: track list, artist,album,track
 
-*join it to another component 'App' to make the main menu
+Приложение разработано на React и TypeScript с использованием сборщика Webpack.
+В ходе разработки использовала API musicbrainz.org.
 
-## Для просмотра приложения перейдите по ссылке (https://dashagoryacheva.github.io/task-with-webpack/) !
+## Функцонал приложения.
+1. Поиск музыкальных композиций по названию
+2. Просмотр страницы с выбранной музыкальной композицией
+3. Просмотр страницы  исполнителя музыкальной композиции
+4. Просмотр альбомов исполнителей с перечнем музыкальных композиций этого альбома
+*!Все страницы адаптированы для мобильных версий*
+*!Все страницы имеют круговые ссылки*
 
-*!Link above is not actual now because of the another task on main branch*
-
-# task-with-webpack
-## Instructions
-To watch code [visit](https://dashagoryacheva.github.io/task-with-webpack/) !
+## Просмотр приложения по ссылке ниже
+[перейдите по ссылке](https://dashagoryacheva.github.io/task-with-webpack/) !
 
