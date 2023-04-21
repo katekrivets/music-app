@@ -15,5 +15,5 @@
 *!Все страницы имеют круговые ссылки*
 
 ## Просмотр приложения по ссылке ниже
-[перейдите по ссылке](https://dashagoryacheva.github.io/task-with-webpack/) !
+[перейдите по ссылке](https://dashagoryacheva.github.io/music-app/) !
 
