@@ -1,10 +1,9 @@
+import { BaseType } from "./Base";
+
 export interface SearchTrack {
   recordings: Array<TrackForSearch>;
 }
-export interface TrackForSearch {
-  id: string;
-  title: string;
-  length: number;
+export interface TrackForSearch extends BaseType {
   video: null;
   "artist-credit": Array<ArtistInfoOfTrack>;
   releases: Array<TrackReleases>;

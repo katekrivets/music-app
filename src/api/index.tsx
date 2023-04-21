@@ -1,6 +1,7 @@
 import { Artists } from "../types/Artist";
-import { Album } from "../types/Album";
+import { Albums } from "../types/Album";
 import { SearchTrack } from "../types/Track";
+import { AlbumWithArtistInfo } from "../types/Album";
 
 export const searchTrack = (track_name: string): Promise<SearchTrack> => {
   return fetch(
@@ -22,8 +23,22 @@ export const getArtistById = (artist_id: string): Promise<Artists> => {
     `https://musicbrainz.org/ws/2/artist/?query=arid:${artist_id}&fmt=json`
   ).then((response) => response.json());
 };
-export const getAlbumById = (album_id: string): Promise<Album> => {
+export const getAlbumByIdWithTracks = (album_id: string): Promise<Albums> => {
   return fetch(
     `https://musicbrainz.org/ws/2/release/${album_id}?fmt=json&inc=recordings`
   ).then((response) => response.json());
+};
+export const getAlbumById = (
+  album_id: string
+): Promise<AlbumWithArtistInfo> => {
+  return fetch(
+    `http://musicbrainz.org/ws/2/release/?query=reid:${album_id}&fmt=json`
+  ).then((response) => response.json());
+};
+export const getImageById = (id: string): Promise<any> => {
+  return fetch(`https://coverartarchive.org/release/${id}/front`).then(
+    (response) => {
+      return response;
+    }
+  );
 };

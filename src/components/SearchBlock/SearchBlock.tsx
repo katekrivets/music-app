@@ -2,16 +2,36 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import "./searchBlock.css";
 import { GrSearch } from "react-icons/gr";
-import { searchTrack } from "../../api";
 import { useNavigate } from "react-router-dom";
-
-function SearchBlock(props: any) {
+import { Link } from "react-router-dom";
+import { TrackForSearch } from "../../types/Track";
+interface SearchBlockProps {
+  itemsArrayChange: (result: Array<TrackForSearch>) => void;
+  value: string;
+  handlerChange: (event: string) => void;
+  trackSearch: (inputValue: string) => Promise<void>;
+}
+function SearchBlock(props: SearchBlockProps) {
   const enabled = props.value.length > 0;
   const navigate = useNavigate();
 
   return (
     <>
-      <header className="search-block">
+      <header id="home-page">
+        <Link to={"/"}>
+          <button
+            onClick={() => {
+              //запрос по методу searchTrack с записью результата в state компонента App
+              props.handlerChange("");
+              props.itemsArrayChange([]);
+            }}
+            className="home-page-button"
+          >
+            Главная страница
+          </button>
+        </Link>
+      </header>
+      <div className="search-block">
         <form className="search-form">
           <input
             value={props.value}
@@ -25,17 +45,18 @@ function SearchBlock(props: any) {
                 e.preventDefault();
                 //при изменении ввода value попадает в поле searchblock
                 props.handlerChange(props.value);
-                searchTrack(props.value)
-                  .then((res) => res.recordings)
-                  .then((result) => {
-                    props.itemsArrayChange(result);
-
+                if (props.value === "") {
+                  return;
+                } else {
+                  props.trackSearch(props.value).then((res) => {
                     navigate("/");
                   });
+                }
               }
             }}
             type="search"
             name="search"
+            placeholder="Поиск любимой песни"
             className="search-input"
           ></input>
         </form>
@@ -43,19 +64,15 @@ function SearchBlock(props: any) {
           disabled={!enabled}
           onClick={() => {
             //запрос по методу searchTrack с записью результата в state компонента App
-            searchTrack(props.value)
-              .then((res) => res.recordings)
-              .then((result) => {
-                props.itemsArrayChange(result);
-
-                navigate("/");
-              });
+            props.trackSearch(props.value).then((res) => {
+              navigate("/");
+            });
           }}
           className="search-icon"
         >
           <GrSearch />
         </button>
-      </header>
+      </div>
       <Outlet />
     </>
   );

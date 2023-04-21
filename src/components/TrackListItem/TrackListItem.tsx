@@ -4,13 +4,13 @@ import "./trackListItem.css";
 import { GrPlayFill } from "react-icons/gr";
 import parseDurationToString from "../utils/parseDurationToString";
 import Loader from "../../loader/loader";
+import { getImageById } from "../../api";
 function TrackListItem(props: any) {
-  const [url, setUrl] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState<any>(true);
+  const [url, setUrl] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  console.log(props.track);
   React.useEffect((): any => {
-    fetch(
-      `https://coverartarchive.org/release/${props.track.releases[0].id}/front`
-    )
+    getImageById(props.track.releases[0].id)
       .then((response) => {
         if (response.status === 404) {
           console.log("SUCCESS", response.status);
@@ -26,9 +26,6 @@ function TrackListItem(props: any) {
       .catch((err) => console.log(err));
   }, [props.track.releases[0].id]);
 
-  // if (isLoading === true) {
-  //   return;
-  // } else {
   return (
     <div className="track-list-item">
       <div className="left-part-of-item">
@@ -81,5 +78,5 @@ function TrackListItem(props: any) {
     </div>
   );
 }
-// }
+
 export default TrackListItem;

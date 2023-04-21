@@ -7,35 +7,37 @@ import { GrPlayFill } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import { getTracktById } from "../../api";
+import { getImageById } from "../../api";
 import populateSongsWithTime from "../utils/populateSongsWithTime";
 import Loader from "../../loader/loader";
 import { Link } from "react-router-dom";
+import { TrackForSearch } from "../../types/Track";
 
 type MyParams = {
   trackId: string;
 };
 
 function Track(): any {
-  const [trackItemArray, setTrackItemArray] = useState<any>();
+  const [trackItemArray, setTrackItemArray] = useState<Array<TrackForSearch>>();
   const { trackId } = useParams<keyof MyParams>() as MyParams;
-  const [url, setUrl] = useState<any>(null);
+  const [url, setUrl] = useState<string>();
 
   React.useEffect(() => {
     getTracktById(trackId)
       .then((result) => {
         console.log(result);
-        setTrackItemArray(populateSongsWithTime(result.recordings));
+        setTrackItemArray(
+          populateSongsWithTime<TrackForSearch>(result.recordings)
+        );
         return populateSongsWithTime(result.recordings);
       })
       .then((r) => console.log(r));
   }, [trackId]);
-  //другой вариант добавления loader
-  if (trackItemArray === null || trackItemArray === undefined) {
+
+  if (trackItemArray == null) {
     return <Loader />;
   } else {
-    fetch(
-      `https://coverartarchive.org/release/${trackItemArray[0].releases[0].id}/front`
-    )
+    getImageById(trackItemArray[0].releases[0].id)
       .then((response) => {
         if (response.status === 404) {
           console.log("SUCCESS", response.status);
@@ -59,8 +61,8 @@ function Track(): any {
             <div className="top-description">
               <div className="track-name-box">
                 <div className="track-name">{trackItemArray[0].title}</div>
-                {trackItemArray[0]["artist-credit"].map((artist: any) => {
-                  <div>{artist.name}</div>;
+                {trackItemArray[0]["artist-credit"].map((artist) => {
+                  return <div>{artist.artist.name}</div>;
                 })}
               </div>
               <Actions />
@@ -81,13 +83,13 @@ function Track(): any {
                 <div className="play-track-text">
                   {" "}
                   <Link
-                    to={`/artist/${trackItemArray[0]["artist-credit"][0].name}`}
+                    to={`/artist/${trackItemArray[0]["artist-credit"][0].artist.id}`}
                     className="link"
-                    key={trackItemArray[0]["artist-credit"][0].name}
+                    key={trackItemArray[0]["artist-credit"][0].artist.id}
                   >
-                    {trackItemArray[0]["artist-credit"][0].name} -{" "}
-                  </Link>
-                  {trackItemArray[0].title}
+                    {trackItemArray[0]["artist-credit"][0].artist.name}
+                  </Link>{" "}
+                  - {trackItemArray[0].title}
                 </div>
               </div>
               <div className="time">
