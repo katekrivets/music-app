@@ -1,41 +1,122 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import { GrPlayFill } from "react-icons/gr";
 import "./artist.css";
 import TrackListItem from "../TrackListItem/TrackListItem";
-function Artist(props: { itemsArray: any[] }) {
-  const { artistId } = useParams();
-  const albumArtistArray = props.itemsArray.filter((itm: any) =>
-    itm.artists.map((artist: any) => artist.id.includes(artistId))
-  );
-  console.log(albumArtistArray);
-  const albumArtistObject = albumArtistArray.find((element: any) =>
-    element.artists.map((el: any) => el.id === artistId)
-  );
-  console.log(albumArtistObject);
-  return (
-    <div className="artist-component">
-      <div className="artist-image-box">
-        <div className="artist-name">{albumArtistObject.artists[0].name}</div>
-        <div className="artist-actions">
-          <button className="button  grey-button">
-            <GrAdd />
-            <span className="text-in-button">Подписаться</span>
-          </button>
-          <button className="button">
-            <GrPlayFill />
-            <span className="text-in-button">Cлушать</span>
-          </button>
+import { getArtistById } from "../../api";
+import { getTrackByArtistId } from "../../api";
+import { getImageById } from "../../api";
+import Loader from "../../loader/loader";
+import populateSongsWithTime from "../utils/populateSongsWithTime";
+import { TrackForSearch } from "../../types/Track";
+type MyParams = {
+  artistId: string;
+};
+function Artist() {
+  const { artistId } = useParams<keyof MyParams>() as MyParams;
+  const [artistObject, setArtistObject] = useState<string>();
+  const [tracksArray, setTracksArray] = useState<
+    Array<TrackForSearch> | undefined
+  >();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [url, setUrl] = useState<string>();
+
+  React.useEffect(() => {
+    const getArtist = getArtistById(artistId).then((result) => {
+      console.log(result);
+      if (result.artists.length === 0) {
+        setArtistObject("NO MATCHES FOUND");
+      } else {
+        setArtistObject(result.artists[0].name);
+        console.log(result.artists[0].name);
+      }
+    });
+    const getTrack = getTrackByArtistId(artistId).then((res: any) => {
+      console.log(res);
+      setTracksArray(populateSongsWithTime<TrackForSearch>(res.recordings));
+    });
+
+    //после выполнения обоих запросов исключаем loader
+    Promise.all([getArtist, getTrack]).then((r) => {
+      setIsLoading(false);
+    });
+  }, [artistId]);
+
+  console.log(tracksArray);
+
+  getImageById(artistId)
+    .then((response) => {
+      if (response.status === 404) {
+        console.log("SUCCESS", response.status);
+        setUrl(`./musicplaceholder.jpg`);
+      } else {
+        setUrl(response.url);
+      }
+    })
+    .catch((err) => console.log(err));
+
+  if (isLoading) {
+    return <Loader />;
+  } else {
+    if (tracksArray == null) {
+      return (
+        <div className="artist-component">
+          {" "}
+          МУЗЫКАЛЬНЫЕ КОМПОЗИЦИИ НЕ НАЙДЕНЫ
         </div>
-      </div>
-      <h1>Популярное</h1>
-      <div className="popular-songs">
-        {props.itemsArray.map((item) => (
-          <TrackListItem track={item} key={item.id} />
-        ))}
-      </div>
-    </div>
-  );
+      );
+    } else {
+      return (
+        <div className="artist-component">
+          <div
+            className="artist-box"
+            style={{
+              backgroundImage: `url(${url})`,
+            }}
+          >
+            <div className="artist-image">
+              {" "}
+              <div className="artist-block">
+                <div className="artist-name">{artistObject}</div>
+                <div className="artist-actions">
+                  <button className="button  grey-button">
+                    <GrAdd />
+                    <span className="text-in-button">Подписаться</span>
+                  </button>
+                  <button className="button">
+                    <GrPlayFill />
+                    <span className="text-in-button">Cлушать</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1>Популярное</h1>
+          {tracksArray.length <= 4 ? (
+            <div className="popular-songs-in-one-column">
+              {" "}
+              {tracksArray.map((item: any) => (
+                <TrackListItem track={item} key={item.id} />
+              ))}
+            </div>
+          ) : tracksArray.length <= 12 ? (
+            <div className="popular-songs-in-two-column">
+              {tracksArray.map((item: any) => (
+                <TrackListItem track={item} key={item.id} />
+              ))}
+            </div>
+          ) : (
+            <div className="popular-songs">
+              {tracksArray.map((item: any) => (
+                <TrackListItem track={item} key={item.id} />
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+  }
 }
+
 export default Artist;

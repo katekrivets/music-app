@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: {
     app: "./src/index.tsx",
@@ -11,7 +11,14 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "assets/images"),
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       inject: true,

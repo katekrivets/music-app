@@ -1,24 +1,28 @@
-import { Base } from "./BaseInfo";
-import { Image } from "./BaseInfo";
-import { Wiki } from "./BaseInfo";
-import { TrackInfo } from "./Track";
-export interface Album {
-  album: AlbumInfo;
-}
-interface AlbumInfo extends Base {
-  artist: string;
-  mbid: string;
-  image: Array<Image>;
-  tracks: { track: Array<TrackInfo> };
-  wiki: Wiki;
-}
-export interface SearchAlbum extends SearchAlbumInfo<AlbumForSearch> {}
+import { BaseType } from "./Base";
 
-interface SearchAlbumInfo<T> {
-  albummatches: { album: Array<T> };
+export interface Albums {
+  title: string;
+  id: string;
+  media: Array<AlbumMedia>;
 }
-interface AlbumForSearch extends Base {
-  artist: string;
-  mbid: string;
-  image: Array<Image>;
+interface AlbumMedia {
+  tracks: Array<AlbumTracks>;
+}
+export interface AlbumTracks extends BaseType {
+  position: number;
+}
+
+export interface AlbumWithArtistInfo {
+  releases: Array<AlbumWithArtist>;
+}
+export interface AlbumWithArtist {
+  id: string;
+  title: string;
+  "artist-credit": Array<ArtistOfAlbum>;
+}
+export interface ArtistOfAlbum {
+  artist: {
+    id: string;
+    name: string;
+  };
 }

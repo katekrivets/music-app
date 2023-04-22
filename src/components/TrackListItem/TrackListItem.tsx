@@ -1,43 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./trackListItem.css";
 import { GrPlayFill } from "react-icons/gr";
 import parseDurationToString from "../utils/parseDurationToString";
+import Loader from "../../loader/loader";
+import { getImageById } from "../../api";
 function TrackListItem(props: any) {
-  console.log(props); // посмотри что тут приходит
+  const [url, setUrl] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  console.log(props.track);
+  React.useEffect((): any => {
+    getImageById(props.track.releases[0].id)
+      .then((response) => {
+        if (response.status === 404) {
+          console.log("SUCCESS", response.status);
+          setUrl(`./musicplaceholder.jpg`);
+        } else {
+          setUrl(response.url);
+        }
+        return response;
+      })
+      .then((loading) => {
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, [props.track.releases[0].id]);
+
   return (
     <div className="track-list-item">
       <div className="left-part-of-item">
-        <div
-          className="music-icon"
-          style={{
-            backgroundImage: `url(${props.track.album.images[2].url})`,
-          }}
-        >
-          <button className="music-button">
-            <GrPlayFill />
-          </button>
-        </div>
+        {isLoading === true ? (
+          <div className="music-icon">
+            <Loader />
+          </div>
+        ) : (
+          <div
+            className="music-icon"
+            style={{
+              backgroundImage: `url(${url})`,
+            }}
+          >
+            <button className="music-button">
+              <GrPlayFill />
+            </button>
+          </div>
+        )}
         <div>
           <div>
             <div className="track-album-block">
               <Link to={`/${props.track.id}`} className="link">
-                {props.track.name}
+                {props.track.title}
               </Link>
               <span> - </span>
-              <Link to={`/album/${props.track.album.id}`} className="link">
+              <Link
+                to={`/album/${props.track.releases[0].id}`}
+                className="link"
+              >
                 {" "}
-                {props.track.album.name}
+                {props.track.releases[0].title}
               </Link>
             </div>
             <div className="artist">
-              {props.track.album.artists.map((artist: any) => (
+              {props.track["artist-credit"].map((artistItem: any) => (
                 <Link
-                  to={`/artist/${artist.id}`}
+                  to={`/artist/${artistItem.artist.id}`}
                   className="link"
-                  key={artist.id}
+                  key={artistItem.artist.id}
                 >
-                  {artist.name}{" "}
+                  {artistItem.name}{" "}
                 </Link>
               ))}
             </div>
@@ -48,4 +78,5 @@ function TrackListItem(props: any) {
     </div>
   );
 }
+
 export default TrackListItem;

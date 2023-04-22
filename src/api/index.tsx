@@ -1,69 +1,44 @@
-import { Artist } from "../types/Artist";
-import { Album } from "../types/Album";
-import { Track } from "../types/Track";
-import { SearchArtist } from "../types/Artist";
-import { SearchAlbum } from "../types/Album";
+import { Artists } from "../types/Artist";
+import { Albums } from "../types/Album";
 import { SearchTrack } from "../types/Track";
-const baseInfo = {
-  root: "https://ws.audioscrobbler.com/2.0/",
-  api_key: "d10c4c81eece480e2b0a973fa614a2aa",
-};
-export const getArtistByName = (artist_name: string): Promise<Artist> => {
-  return fetch(
-    `${baseInfo.root}?method=artist.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}`
-  ).then((response) => response.json());
-};
-export const getArtistById = (artist_id: string): Promise<Artist> => {
-  return fetch(
-    `${baseInfo.root}?method=artist.getinfo&api_key=${baseInfo.api_key}&mbid=${artist_id}`
-  ).then((response) => response.json());
-};
-export const searchArtist = (artist_name: string): Promise<SearchArtist> => {
-  return fetch(
-    `${baseInfo.root}?method=artit.search&api_key=${baseInfo.api_key}&artist=${artist_name}`
-  ).then((response) => response.json());
-};
+import { AlbumWithArtistInfo } from "../types/Album";
 
-export const getAlbumByName = (
-  artist_name: string,
-  album_name: string
-): Promise<Album> => {
-  return fetch(
-    `${baseInfo.root}?method=album.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}&album=${album_name}`
-  ).then((response) => response.json());
-};
-export const getAlbumtById = (
-  artist_name: string,
-  album_id: string
-): Promise<Album> => {
-  return fetch(
-    `${baseInfo.root}?method=album.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}&mbid=${album_id}`
-  ).then((response) => response.json());
-};
-export const searchAlbum = (album_name: string): Promise<SearchAlbum> => {
-  return fetch(
-    `${baseInfo.root}?method=album.search&api_key=${baseInfo.api_key}&album=${album_name}`
-  ).then((response) => response.json());
-};
-
-export const getTrackByName = (
-  artist_name: string,
-  track_name: string
-): Promise<Track> => {
-  return fetch(
-    `${baseInfo.root}?method=track.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}&track=${track_name}`
-  ).then((response) => response.json());
-};
-export const getTracktById = (
-  artist_name: string,
-  track_id: string
-): Promise<Track> => {
-  return fetch(
-    `${baseInfo.root}?method=track.getinfo&api_key=${baseInfo.api_key}&artist=${artist_name}&mbid=${track_id}`
-  ).then((response) => response.json());
-};
 export const searchTrack = (track_name: string): Promise<SearchTrack> => {
   return fetch(
-    `${baseInfo.root}?method=track.search&api_key=${baseInfo.api_key}&track=${track_name}`
+    `https://musicbrainz.org/ws/2/recording/?query=name:${track_name}&fmt=json`
   ).then((response) => response.json());
+};
+export const getTracktById = (track_id: string): Promise<SearchTrack> => {
+  return fetch(
+    `https://musicbrainz.org/ws/2/recording/?query=rid:${track_id}&fmt=json`
+  ).then((response) => response.json());
+};
+export const getTrackByArtistId = (artist_id: string): Promise<SearchTrack> => {
+  return fetch(
+    `http://musicbrainz.org/ws/2/recording/?query=arid:${artist_id}&fmt=json`
+  ).then((response) => response.json());
+};
+export const getArtistById = (artist_id: string): Promise<Artists> => {
+  return fetch(
+    `https://musicbrainz.org/ws/2/artist/?query=arid:${artist_id}&fmt=json`
+  ).then((response) => response.json());
+};
+export const getAlbumByIdWithTracks = (album_id: string): Promise<Albums> => {
+  return fetch(
+    `https://musicbrainz.org/ws/2/release/${album_id}?fmt=json&inc=recordings`
+  ).then((response) => response.json());
+};
+export const getAlbumById = (
+  album_id: string
+): Promise<AlbumWithArtistInfo> => {
+  return fetch(
+    `http://musicbrainz.org/ws/2/release/?query=reid:${album_id}&fmt=json`
+  ).then((response) => response.json());
+};
+export const getImageById = (id: string): Promise<any> => {
+  return fetch(`https://coverartarchive.org/release/${id}/front`).then(
+    (response) => {
+      return response;
+    }
+  );
 };

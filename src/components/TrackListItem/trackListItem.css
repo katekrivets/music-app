@@ -3,12 +3,12 @@
   align-items: center;
   justify-content: space-between;
   padding-inline-start: 0px;
-  padding: 4px;
+  padding: 6px 0px;
 }
 
 .track-list-item:hover {
   border: none;
-  background-color: var(--light-pink);
+  background-color: var(--medium-grey);
   border-radius: var(--main-radius);
 }
 
@@ -32,9 +32,9 @@
 
 .music-icon {
   border-radius: var(--main-radius);
-  margin-right: 1%;
+  margin-right: 10px;
   height: 50px;
-  width: 50px;
+  min-width: 50px;
   background-size: contain;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 }
 
 svg {
-  size: 18px;
+  size: 24px;
 }
 
 .link {

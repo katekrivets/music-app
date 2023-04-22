@@ -1,18 +1,29 @@
 .track-action {
   display: flex;
-  margin: 8px 0px;
+  margin: 16px 0px 8px 0px;
 }
 
 .click-button {
   border: none;
   background-color: var(--white);
   margin: 0;
+  cursor: pointer;
+}
+.click-button:first-child {
+  color: var(--grey);
 }
 .add,
 .share {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
+.add:hover,
+.share:hover,
+.click-button:hover {
+  color: #000000;
+}
+
 .share {
   margin-left: 16px;
 }
@@ -31,5 +42,6 @@
   }
   .track-action {
     justify-content: space-between;
+    padding-bottom: 20px;
   }
 }

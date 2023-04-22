@@ -5,36 +5,66 @@
   width: 100%;
   padding-top: 20px;
 }
-.artist-image-box {
+.artist-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  background-image: url("./meladze.jpg");
   width: 100%;
-  height: 200px;
-  background-size: cover;
+  height: 300px;
+
+  background-size: contain;
+  position: relative;
+  z-index: 4;
 }
-.artist-actions {
-  width: 250px;
-  height: 40px;
-  margin-bottom: 6px;
+.artist-image {
+  width: 100%;
+  height: 300px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(65, 104, 146, 0.5),
+    30%,
+    rgba(27, 83, 144, 0.8),
+    80%,
+    rgb(16, 64, 117)
+  );
+}
+
+.artist-image {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
   display: flex;
   align-items: flex-end;
 }
+.artist-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+.artist-actions {
+  width: 300px;
+  height: 40px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
 .button {
   width: 50%;
   margin: 0px 6px;
   border-radius: 4px; /*6px слишком много , поэтому уменьшила до 4*/
   border: none;
-  height: 60%;
-
+  height: 80%;
   text-align: center;
 }
 .text-in-button {
-  font-size: 10px;
+  font-size: 14px;
 }
 .grey-button {
-  background-color: var(--grey-for-button);
+  background-color: hsla(240, 1%, 76%, 0.5);
 }
 
 .button :nth-child(1) {
@@ -42,26 +72,53 @@
 }
 
 .artist-name {
-  color: black;
-  font-size: 20px;
+  color: rgb(251, 247, 247);
+  font-size: 32px;
   font-weight: bold;
-  margin: 0px 0px 12px 12px;
+  display: flex;
+  align-items: center;
+}
+.popular-songs,
+.popular-songs-in-one-column,
+.popular-songs-in-two-column {
+  display: grid;
+  grid-template-rows: 70px 70px 70px 70px;
+  gap: 6px;
+  max-height: 750px;
+  margin-left: 20px;
 }
 .popular-songs {
-  display: grid;
-  grid-template-columns: 400px 400px 400px 400px;
-  grid-template-rows: 60px 60px 60px 60px;
-  gap: 6px;
+  grid-template-columns: 420px 420px 420px 420px;
   overflow-y: auto;
-  max-height: 750px;
-  margin-left: 12px;
+}
+.popular-songs-in-one-column {
+  grid-auto-flow: column;
+}
+.popular-songs-in-two-column {
+  grid-template-columns: 1fr 1fr;
 }
 h1 {
   color: var(--black);
-  font-size: 12px;
-  padding-left: 12px;
-  margin: 12px 0px 16px 0px;
+  font-size: 15px;
+  padding-left: 20px;
+  margin: 20px 0px;
 }
+@media (max-width: 768px) {
+  .text-in-button {
+    font-size: 10px;
+  }
+  .artist-actions {
+    width: 240px;
+    height: 40px;
+  }
+  .popular-songs {
+    display: block;
+  }
+  .artist-name {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 576px) {
   .text-in-button {
     display: none;

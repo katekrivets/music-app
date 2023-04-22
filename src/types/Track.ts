@@ -1,39 +1,30 @@
-import { Base } from "./BaseInfo";
-import { Image } from "./BaseInfo";
-import { Wiki } from "./BaseInfo";
-export interface Track {
-  name: string;
-  mbid: string;
-  url: string;
-  duration: string;
-  artist: TrackOfArtist;
-  album: TrackinAlbum;
-  wiki: Wiki;
-}
-interface TrackinAlbum {
-  artist: string;
-  mbid: string;
-  url: string;
-  image: Array<Image>;
-  title: string;
-}
-export interface TrackInfo {
-  duration: number;
-  url: string;
-  name: string;
-  artist: TrackOfArtist;
-}
-interface TrackOfArtist extends Base {
-  mbid: string;
-}
-export interface SearchTrack extends SearchTrackInfo<TrackForSearch> {}
+import { BaseType } from "./Base";
 
-interface SearchTrackInfo<T> {
-  trackmatches: { track: Array<T> };
+export interface SearchTrack {
+  recordings: Array<TrackForSearch>;
 }
-interface TrackForSearch extends Base {
-  artist: string;
-  mbid: string;
-  image: Array<Image>;
-  listeners: string;
+export interface TrackForSearch extends BaseType {
+  video: null;
+  "artist-credit": Array<ArtistInfoOfTrack>;
+  releases: Array<TrackReleases>;
+  isrcs: Array<string>;
+}
+export interface TrackReleases {
+  id: string;
+  title: string;
+  "status-id": string;
+  "release-group": {
+    id: string;
+    "primary-type": string;
+  };
+  date: string;
+  country: string;
+  "track-count": number;
+}
+export interface ArtistInfoOfTrack {
+  artist: {
+    id: string;
+    name: string;
+    "sort-name": string;
+  };
 }

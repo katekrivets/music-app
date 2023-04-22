@@ -39,11 +39,14 @@
 .track-name-box {
   margin-left: 6px;
 }
-
+.track-name-box div:nth-child(2) {
+  margin-top: 8px;
+}
 .bottom-description {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 20px;
 }
 button {
   width: var(--icon-width);
@@ -51,6 +54,11 @@ button {
   border-radius: 30px;
   border: none;
   background-color: var(--white);
+}
+.play-icon :first-child:hover,
+.mobile-view-button :first-child:hover,
+.click-button svg:hover {
+  font-size: 14px;
 }
 .mobile-view-button {
   display: none;
@@ -61,7 +69,7 @@ button {
 }
 
 .time {
-  padding-right: 10px;
+  padding-right: 14px;
 }
 @media (max-width: 576px) {
   .image-block {
@@ -79,6 +87,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 0px;
   }
   .play-icon {
     border-radius: 32px;
@@ -88,9 +97,11 @@ button {
     justify-content: center;
     align-items: center;
   }
+
   .play-icon :first-child,
   .mobile-view-button :first-child {
     font-size: 12px;
+    cursor: pointer;
   }
 
   .play-track-text {
@@ -107,15 +118,6 @@ button {
   }
 }
 @media (max-width: 768px) {
-  .image-track-block {
-    width: 160px;
-    height: 160px;
-    margin: 16px 0px 16px 16px;
-  }
-  .description-of-track {
-    padding: 0px 0px 40px 14px;
-    height: 140px;
-  }
   .track-name {
     font-weight: bold;
     color: var(--black);
@@ -123,7 +125,7 @@ button {
     margin-bottom: 4px;
   }
   * {
-    font-size: 10px;
+    font-size: 12px;
   }
   button {
     border-radius: 30px;

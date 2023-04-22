@@ -43,11 +43,11 @@
   padding-bottom: 12px;
 }
 .album-track-box {
+  color: var(--black);
+  margin-right: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--black);
-  margin-right: 20px;
 }
 .album-track {
   margin-left: 6px;
@@ -58,7 +58,8 @@ span {
   font-weight: bold;
 }
 .number {
-  margin-right: 6px;
+  margin-right: 12px;
+  min-width: 15px;
 }
 
 @media (max-width: 768px) {
@@ -68,6 +69,7 @@ span {
   }
   .album-top-box {
     display: flex;
+    padding-bottom: 20px;
   }
   .album-description {
     height: 180px;
@@ -94,10 +96,12 @@ span {
     padding: 0%;
     height: 120px;
   }
-  .album-name,
-  .artist {
+  .album-name {
     text-align: center;
     margin: 0%;
+  }
+  .top-album-description :nth-child(2) {
+    text-align: center;
   }
 }
 @media (min-width: 769px) {

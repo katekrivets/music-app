@@ -4,10 +4,9 @@
   --icon-width: 30px;
   --icon-height: 30px;
   --grey: #787878;
-  --grey-for-button: #c2c1c1;
+  --grey-for-button: #c1c1c2;
   --white: #ffffff;
-  --medium-grey: #f8f8f8;
-  --light-pink: #fff1f1;
+  --medium-grey: #f0f2f7;
   --black: #000000;
   --light-grey: #e1dfdf;
   --margin-top-bottom: 20px 0px;
@@ -21,5 +20,9 @@ body {
 }
 * {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
+}
+svg:hover {
+  font-size: 13px;
+  cursor: pointer;
 }

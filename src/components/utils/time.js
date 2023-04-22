@@ -7,6 +7,11 @@ function songDuration(ms) {
   if (String(s).length < 2) {
     s = "0" + s;
   }
+  if (ms === undefined) {
+    h = 0;
+    m = 0;
+    s = "00";
+  }
   timeObject = {
     hours: h,
     minutes: m,
