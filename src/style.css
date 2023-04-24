@@ -15,8 +15,11 @@
 body {
   margin: 0;
   background-color: var(--medium-grey);
-  padding: 2% 10% 2% 10%;
+
   color: var(--grey);
+}
+.container {
+  margin: 2% 10% 2% 10%;
 }
 * {
   font-family: Arial, Helvetica, sans-serif;
@@ -25,4 +28,31 @@ body {
 svg:hover {
   font-size: 13px;
   cursor: pointer;
+}
+#navigation-block {
+  background-color: var(--white);
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+.music-app-text {
+  font-size: 25px;
+  color: #477ab2;
+}
+.navigation-block-button:hover {
+  text-decoration: underline;
+}
+.navigation-block-button {
+  background-size: contain;
+  height: 20px;
+  width: 200px;
+  cursor: pointer;
+  border: 0px;
+  font-size: 14px;
+  color: #6390c0;
+  text-decoration: none;
+  text-align: start;
+  padding-left: 40px;
 }

@@ -61,9 +61,15 @@ function Track(): any {
             <div className="top-description">
               <div className="track-name-box">
                 <div className="track-name">{trackItemArray[0].title}</div>
-                {trackItemArray[0]["artist-credit"].map((artist) => {
-                  return <div>{artist.artist.name}</div>;
-                })}
+                <Link
+                  to={`/artist/${trackItemArray[0]["artist-credit"][0].artist.id}`}
+                  className="link"
+                  key={trackItemArray[0]["artist-credit"][0].artist.id}
+                >
+                  {trackItemArray[0]["artist-credit"].map((artist) => {
+                    return <div>{artist.artist.name}</div>;
+                  })}
+                </Link>{" "}
               </div>
               <Actions />
             </div>

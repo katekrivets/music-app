@@ -36,9 +36,5 @@ export const getAlbumById = (
   ).then((response) => response.json());
 };
 export const getImageById = (id: string): Promise<any> => {
-  return fetch(`https://coverartarchive.org/release/${id}/front`).then(
-    (response) => {
-      return response;
-    }
-  );
+  return fetch(`https://coverartarchive.org/release/${id}/front`);
 };

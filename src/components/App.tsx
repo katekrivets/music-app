@@ -8,6 +8,7 @@ import Artist from "./Artist";
 import populateSongsWithTime from "./utils/populateSongsWithTime";
 import { TrackForSearch } from "../types/Track";
 import { searchTrack } from "../api";
+import { Link } from "react-router-dom";
 
 interface ComponentState {
   itemsArray: Array<TrackForSearch & { duration: string }>;
@@ -47,42 +48,54 @@ class App extends Component<ComponentProps, ComponentState> {
 
     this.itemsArrayChange(resultWithReleases);
   }
-  componentDidUpdate(
-    prevProps: Readonly<any>,
-    prevState: Readonly<any>,
-    snapshot?: any
-  ): void {
-    console.log(this.state);
-  }
 
   render() {
     return (
-      <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <SearchBlock
-                value={this.state.value}
-                handlerChange={this.handlerChange}
-                itemsArrayChange={this.itemsArrayChange}
-                trackSearch={this.trackSearch}
-              />
-            }
-          >
+      <div>
+        <header id="navigation-block">
+          <div className="music-app-text">MusicApp</div>
+          <Link to={"/"}>
+            <button
+              onClick={() => {
+                //запрос по методу searchTrack с записью результата в state компонента App
+                this.handlerChange("");
+                this.itemsArrayChange([]);
+              }}
+              className="navigation-block-button"
+            >
+              Главная страница
+            </button>
+          </Link>
+        </header>
+        <div className="container">
+          <Routes>
             <Route
               path="/"
-              index
-              element={<TrackList itemsArray={this.state.itemsArray} />}
-            />
-            <Route path="/:trackId" element={<Track />} />
-            <Route
-              path="/artist/:artistId"
-              element={<Artist itemsArrayChange={this.itemsArrayChange} />}
-            />
-            <Route path="/album/:albumId" element={<Album />} />
-          </Route>
-        </Routes>
+              element={
+                <SearchBlock
+                  value={this.state.value}
+                  handlerChange={this.handlerChange}
+                  itemsArrayChange={this.itemsArrayChange}
+                  trackSearch={this.trackSearch}
+                />
+              }
+            >
+              <Route
+                path="/"
+                index
+                element={
+                  <TrackList
+                    itemsArray={this.state.itemsArray}
+                    value={this.state.value}
+                  />
+                }
+              />
+              <Route path="/:trackId" element={<Track />} />
+              <Route path="/artist/:artistId" element={<Artist />} />
+              <Route path="/album/:albumId" element={<Album />} />
+            </Route>
+          </Routes>
+        </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import "./searchBlock.css";
 import { GrSearch } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 import { TrackForSearch } from "../../types/Track";
 interface SearchBlockProps {
   itemsArrayChange: (result: Array<TrackForSearch>) => void;
@@ -17,20 +17,6 @@ function SearchBlock(props: SearchBlockProps) {
 
   return (
     <>
-      <header id="home-page">
-        <Link to={"/"}>
-          <button
-            onClick={() => {
-              //запрос по методу searchTrack с записью результата в state компонента App
-              props.handlerChange("");
-              props.itemsArrayChange([]);
-            }}
-            className="home-page-button"
-          >
-            Главная страница
-          </button>
-        </Link>
-      </header>
       <div className="search-block">
         <form className="search-form">
           <input
@@ -56,7 +42,7 @@ function SearchBlock(props: SearchBlockProps) {
             }}
             type="search"
             name="search"
-            placeholder="Поиск любимой песни"
+            placeholder="Введите название песни или исполнителя"
             className="search-input"
           ></input>
         </form>

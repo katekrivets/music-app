@@ -6,13 +6,17 @@
   opacity: 1;
   margin-top: 12px;
 }
+.album-box {
+  border-radius: 6px 6px 0px 0px;
+  padding-top: 20px;
+  background-color: var(--white);
+}
 .album-top-box {
   display: flex;
-  border-radius: 6px 6px 0px 0px;
   width: 100%;
-  background-color: var(--white);
   margin-bottom: 12px;
   border-bottom: 1px solid var(--light-grey);
+  border-top: 1px solid var(--light-grey);
 }
 .album-image-block {
   width: 200px;
@@ -69,7 +73,6 @@ span {
   }
   .album-top-box {
     display: flex;
-    padding-bottom: 20px;
   }
   .album-description {
     height: 180px;
@@ -85,7 +88,10 @@ span {
   .top-album-description {
     height: 50px;
   }
-
+  .album-top-box {
+    border-top: none;
+    padding-bottom: 10px;
+  }
   .album-image-block {
     width: 200px;
     height: 200px;

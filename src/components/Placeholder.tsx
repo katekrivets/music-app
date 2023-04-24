@@ -3,8 +3,10 @@ import { BsMusicNoteList } from "react-icons/bs";
 import "./placeholder.css";
 function Placeholder() {
   return (
-    <div className="home-page-icon">
-      <BsMusicNoteList />
+    <div className="track-block">
+      <div className="home-page-icon">
+        <BsMusicNoteList />
+      </div>
     </div>
   );
 }

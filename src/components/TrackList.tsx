@@ -5,6 +5,7 @@ import Placeholder from "./Placeholder";
 import { TrackForSearch } from "../types/Track";
 interface TrackListProps {
   itemsArray: Array<TrackForSearch & { duration: string }>;
+  value: string;
 }
 function TrackList(props: TrackListProps) {
   if (props.itemsArray.length === 0) {
