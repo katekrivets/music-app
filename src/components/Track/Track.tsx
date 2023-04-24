@@ -23,30 +23,24 @@ function Track(): any {
   const [url, setUrl] = useState<string>();
 
   React.useEffect(() => {
-    getTracktById(trackId)
-      .then((result) => {
-        console.log(result);
-        setTrackItemArray(
-          populateSongsWithTime<TrackForSearch>(result.recordings)
-        );
-        return populateSongsWithTime(result.recordings);
-      })
-      .then((r) => console.log(r));
+    getTracktById(trackId).then((result) => {
+      setTrackItemArray(
+        populateSongsWithTime<TrackForSearch>(result.recordings)
+      );
+      return populateSongsWithTime(result.recordings);
+    });
   }, [trackId]);
 
   if (trackItemArray == null) {
     return <Loader />;
   } else {
-    getImageById(trackItemArray[0].releases[0].id)
-      .then((response) => {
-        if (response.status === 404) {
-          console.log("SUCCESS", response.status);
-          setUrl(`./musicplaceholder.jpg`);
-        } else {
-          setUrl(response.url);
-        }
-      })
-      .catch((err) => console.log(err));
+    getImageById(trackItemArray[0].releases[0].id).then((response) => {
+      if (response.status === 404) {
+        setUrl(`./musicplaceholder.jpg`);
+      } else {
+        setUrl(response.url);
+      }
+    });
 
     return (
       <div className="track-component">

@@ -32,23 +32,18 @@ function Album() {
         return result;
       })
       .then((res) => {
-        return getImageById(res.id)
-          .then((response) => {
-            if (response.status === 404) {
-              console.log("SUCCESS", response.status);
-              setUrl(`./musicplaceholder.jpg`);
-            } else {
-              setUrl(response.url);
-            }
-          })
-          .catch((err) => console.log(err));
+        return getImageById(res.id).then((response) => {
+          if (response.status === 404) {
+            setUrl(`./musicplaceholder.jpg`);
+          } else {
+            setUrl(response.url);
+          }
+        });
       });
 
-    const getAlbum = getAlbumById(albumId)
-      .then((result) => {
-        setAlbumObject(result.releases[0]);
-      })
-      .catch((err) => console.log(err));
+    const getAlbum = getAlbumById(albumId).then((result) => {
+      setAlbumObject(result.releases[0]);
+    });
     //после выполнения обоих запросов исключаем loader
     Promise.all([getAlbum, getTracksOfAlbum]).then((r) => {
       setIsLoading(false);
