@@ -32,23 +32,18 @@ function Album() {
         return result;
       })
       .then((res) => {
-        return getImageById(res.id)
-          .then((response) => {
-            if (response.status === 404) {
-              console.log("SUCCESS", response.status);
-              setUrl(`./musicplaceholder.jpg`);
-            } else {
-              setUrl(response.url);
-            }
-          })
-          .catch((err) => console.log(err));
+        return getImageById(res.id).then((response) => {
+          if (response.status === 404) {
+            setUrl(`./musicplaceholder.jpg`);
+          } else {
+            setUrl(response.url);
+          }
+        });
       });
 
-    const getAlbum = getAlbumById(albumId)
-      .then((result) => {
-        setAlbumObject(result.releases[0]);
-      })
-      .catch((err) => console.log(err));
+    const getAlbum = getAlbumById(albumId).then((result) => {
+      setAlbumObject(result.releases[0]);
+    });
     //после выполнения обоих запросов исключаем loader
     Promise.all([getAlbum, getTracksOfAlbum]).then((r) => {
       setIsLoading(false);
@@ -63,29 +58,31 @@ function Album() {
     } else {
       return (
         <div className="album-component">
-          <div className="album-top-box">
-            <div
-              className="album-image-block"
-              style={{
-                backgroundImage: `url(${url})`,
-              }}
-            ></div>
-            <div className="album-description">
-              <div className="top-album-description">
-                <div className="album-name">{albumObject.title}</div>
+          <div className="album-box">
+            <div className="album-top-box">
+              <div
+                className="album-image-block"
+                style={{
+                  backgroundImage: `url(${url})`,
+                }}
+              ></div>
+              <div className="album-description">
+                <div className="top-album-description">
+                  <div className="album-name">{albumObject.title}</div>
 
-                <div className="artist">
-                  <Link
-                    to={`/artist/${albumObject["artist-credit"][0].artist.id}`}
-                    className="link"
-                    key={albumObject["artist-credit"][0].artist.id}
-                  >
-                    {albumObject["artist-credit"][0].artist.name}
-                  </Link>
+                  <div className="artist">
+                    <Link
+                      to={`/artist/${albumObject["artist-credit"][0].artist.id}`}
+                      className="link"
+                      key={albumObject["artist-credit"][0].artist.id}
+                    >
+                      {albumObject["artist-credit"][0].artist.name}
+                    </Link>
+                  </div>
                 </div>
+                <Actions />
+                <div className="album-actions"></div>
               </div>
-              <Actions />
-              <div className="album-actions"></div>
             </div>
           </div>
           <div className="album-track-container">

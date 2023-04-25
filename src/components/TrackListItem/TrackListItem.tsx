@@ -8,12 +8,11 @@ import { getImageById } from "../../api";
 function TrackListItem(props: any) {
   const [url, setUrl] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  console.log(props.track);
+
   React.useEffect((): any => {
     getImageById(props.track.releases[0].id)
       .then((response) => {
         if (response.status === 404) {
-          console.log("SUCCESS", response.status);
           setUrl(`./musicplaceholder.jpg`);
         } else {
           setUrl(response.url);
@@ -22,8 +21,7 @@ function TrackListItem(props: any) {
       })
       .then((loading) => {
         setIsLoading(false);
-      })
-      .catch((err) => console.log(err));
+      });
   }, [props.track.releases[0].id]);
 
   return (

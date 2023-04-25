@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding-inline-start: 0px;
-  padding: 6px 0px;
+  padding: 6px 0px 6px 6px;
 }
 
 .track-list-item:hover {

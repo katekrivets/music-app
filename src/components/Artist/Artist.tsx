@@ -24,16 +24,13 @@ function Artist() {
 
   React.useEffect(() => {
     const getArtist = getArtistById(artistId).then((result) => {
-      console.log(result);
       if (result.artists.length === 0) {
         setArtistObject("NO MATCHES FOUND");
       } else {
         setArtistObject(result.artists[0].name);
-        console.log(result.artists[0].name);
       }
     });
     const getTrack = getTrackByArtistId(artistId).then((res: any) => {
-      console.log(res);
       setTracksArray(populateSongsWithTime<TrackForSearch>(res.recordings));
     });
 
@@ -43,18 +40,13 @@ function Artist() {
     });
   }, [artistId]);
 
-  console.log(tracksArray);
-
-  getImageById(artistId)
-    .then((response) => {
-      if (response.status === 404) {
-        console.log("SUCCESS", response.status);
-        setUrl(`./musicplaceholder.jpg`);
-      } else {
-        setUrl(response.url);
-      }
-    })
-    .catch((err) => console.log(err));
+  getImageById(artistId).then((response) => {
+    if (response.status === 404) {
+      setUrl(`./musicplaceholder.jpg`);
+    } else {
+      setUrl(response.url);
+    }
+  });
 
   if (isLoading) {
     return <Loader />;
