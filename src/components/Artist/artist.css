@@ -84,10 +84,10 @@
 .popular-songs-in-one-column,
 .popular-songs-in-two-column {
   display: grid;
-  grid-template-rows: 70px 70px 70px 70px;
+  grid-template-rows: 62px 62px 62px 62px;
   gap: 6px;
   max-height: 750px;
-  margin-left: 20px;
+  padding: 0px 14px;
 }
 .popular-songs {
   grid-template-columns: 420px 420px 420px 420px;
