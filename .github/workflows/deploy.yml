@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: install deps
         run: npm install
@@ -21,13 +21,18 @@ jobs:
       - name: build deps
         run: npm run build
 
-      - run: |
+      - name: copy files
+        run: |
           find -maxdepth 1 ! -name dist ! -name . -name "[^.]*" -exec rm -rv {} +
           ls
           cp -r ./dist/* ./
           rm -r ./dist
-          git config --global user.name "${{ env.GIT_AUTHOR_NAME }}"
-          git config --global user.email "${{ env.GIT_AUTHOR_EMAIL }}"
+          
+      - name: push files
+        run: |
+          git config --global user.name "${{ secrets.GIT_AUTHOR_NAME }}"
+          git config --global user.email "${{ secrets.GIT_AUTHOR_EMAIL }}"
           git commit -am "deploy"
           git checkout gh-pages
           git push origin gh-pages
+        
