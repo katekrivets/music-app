@@ -24,7 +24,7 @@ jobs:
       - run: |
           git config --global user.name "${{ env.GIT_AUTHOR_NAME }}"
           git config --global user.email "${{ env.GIT_AUTHOR_EMAIL }}"
-          rm -r !(dist)
+          find -maxdepth 1 ! -name dist ! -name . -exec rm -rv {} \;
           cp -a ./dist/. ./
           rm -r
           git commit -am "deploy"
