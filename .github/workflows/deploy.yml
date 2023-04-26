@@ -42,5 +42,5 @@ jobs:
           git checkout gh-pages
           find -maxdepth 1 ! -name . -name "[^.]*" -exec rm -rv {} +
           git stash pop
-          git commit -m "deploy"
+          git commit -am "deploy"
           git push origin gh-pages
