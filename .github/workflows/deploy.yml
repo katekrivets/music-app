@@ -36,6 +36,6 @@ jobs:
         run: |
           git config --global user.email "$email"
           git config --global user.name "$name"
-          git commit -am "deploy"
           git checkout gh-pages
+          git commit -am "deploy"
           git push origin gh-pages
