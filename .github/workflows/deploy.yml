@@ -30,8 +30,8 @@ jobs:
           
       - name: push files
         run: |
-          git config --global user.name "${{ secrets.GIT_AUTHOR_NAME }}"
-          git config --global user.email "${{ secrets.GIT_AUTHOR_EMAIL }}"
+          git config --global user.name "${{ env.GIT_AUTHOR_NAME }}"
+          git config --global user.email "${{ env.GIT_AUTHOR_EMAIL }}"
           git commit -am "deploy"
           git checkout gh-pages
           git push origin gh-pages
