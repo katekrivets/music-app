@@ -11,6 +11,7 @@ console.log('test');
 
 root.render(
   <HashRouter>
+    test
     <App />
   </HashRouter>
 );
