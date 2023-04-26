@@ -7,9 +7,10 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  
 env:
-  EMAIL: ${{ vars.AUTHOR_EMAIL }}
-  NAME: ${{ vars.AUTHOR_NAME }}
+  email: ${{ vars.AUTHOR_EMAIL }}
+  name: ${{ vars.AUTHOR_NAME }}
   
 jobs:
   deploy:
@@ -33,9 +34,8 @@ jobs:
           
       - name: push files
         run: |
-          git config --global user.email "$EMAIL"
-          git config --global user.name "$NAME"
+          git config --global user.email "$email"
+          git config --global user.name "$name"
           git commit -am "deploy"
           git checkout gh-pages
           git push origin gh-pages
-        
