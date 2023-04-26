@@ -14,9 +14,11 @@ function TrackList(props: TrackListProps) {
     return (
       <div className="track-block">
         <div className="text">Результаты поиска</div>
-        {props.itemsArray.map((item: any) => (
-          <TrackListItem track={item} key={item.id} />
-        ))}
+        <div className="songs-block">
+          {props.itemsArray.map((item: any) => (
+            <TrackListItem track={item} key={item.id} />
+          ))}
+        </div>
       </div>
     );
   }

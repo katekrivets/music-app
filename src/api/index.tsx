@@ -5,7 +5,7 @@ import { AlbumWithArtistInfo } from "../types/Album";
 
 export const searchTrack = (track_name: string): Promise<SearchTrack> => {
   return fetch(
-    `https://musicbrainz.org/ws/2/recording/?query=name:${track_name}&fmt=json`
+    `https://musicbrainz.org/ws/2/recording/?query=${track_name}&fmt=json`
   ).then((response) => response.json());
 };
 export const getTracktById = (track_id: string): Promise<SearchTrack> => {

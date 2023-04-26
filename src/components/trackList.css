@@ -4,13 +4,16 @@
   border-radius: var(--main-radius);
   background-color: var(--white);
   color: var(--grey);
-  padding: 20px;
 }
 .text {
   padding: 4px 0px 20px;
   font-size: 14px;
   color: #000000;
   font-weight: bold;
+  padding: 20px;
+}
+.songs-block {
+  padding: 0px 14px 0px 14px;
 }
 @media (max-width: 768px) {
   .music-icon {

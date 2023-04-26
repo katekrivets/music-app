@@ -17,6 +17,7 @@ body {
   background-color: var(--medium-grey);
 
   color: var(--grey);
+  box-sizing: content-box;
 }
 .container {
   margin: 2% 10% 2% 10%;
@@ -36,10 +37,13 @@ svg:hover {
   display: flex;
   align-items: center;
   padding-left: 30px;
+  box-sizing: border-box;
 }
 .music-app-text {
   font-size: 25px;
   color: #477ab2;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #87b0dc;
 }
 .navigation-block-button:hover {
   text-decoration: underline;

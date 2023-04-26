@@ -42,7 +42,7 @@ function SearchBlock(props: SearchBlockProps) {
             }}
             type="search"
             name="search"
-            placeholder="Введите название песни или исполнителя"
+            placeholder="Введите название песни"
             className="search-input"
           ></input>
         </form>

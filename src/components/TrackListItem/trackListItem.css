@@ -3,13 +3,13 @@
   align-items: center;
   justify-content: space-between;
   padding-inline-start: 0px;
-  padding: 6px 0px 6px 6px;
+  padding: 6px 6px 6px 0px;
 }
 
 .track-list-item:hover {
-  border: none;
+  /* border: none; */
   background-color: var(--medium-grey);
-  border-radius: var(--main-radius);
+  border-radius: 6px;
 }
 
 .track-list-item:hover .music-button {
@@ -23,6 +23,7 @@
   display: flex;
   width: 100%;
   align-items: center;
+  padding-left: 6px;
 }
 
 .track-album-block a:nth-child(1) {

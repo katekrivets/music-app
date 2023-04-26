@@ -7,7 +7,6 @@ export interface TrackForSearch extends BaseType {
   video: null;
   "artist-credit": Array<ArtistInfoOfTrack>;
   releases: Array<TrackReleases>;
-  isrcs: Array<string>;
 }
 export interface TrackReleases {
   id: string;
