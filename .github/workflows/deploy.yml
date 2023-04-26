@@ -37,9 +37,10 @@ jobs:
           git config --global user.email "$email"
           git config --global user.name "$name"
           git fetch
+          git add .
           git stash
           git checkout gh-pages
           find -maxdepth 1 ! -name . -name "[^.]*" -exec rm -rv {} +
           git stash pop
-          git commit -am "deploy"
+          git commit -m "deploy"
           git push origin gh-pages
