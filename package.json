@@ -60,12 +60,5 @@
     "react-redux": "^8.0.5",
     "react-router": "^6.6.2",
     "react-router-dom": "^6.6.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DashaGoryacheva/12.git"
-  },
-  "bugs": {
-    "url": "https://github.com/DashaGoryacheva/12/issues"
   }
 }
